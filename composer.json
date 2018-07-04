@@ -1,5 +1,5 @@
 {
-  "name": "vardot/uber_publisher_social_post",
+  "name": "drupal/uber_publisher_social_post",
   "description": "Adds the ability to automatically post articles and posts to social media networks like Twitter and/or Facebook. You will have to authenticate your social media accounts after enabling this feature.",
   "type": "drupal-module",
   "license": "GPL-2.0+",
