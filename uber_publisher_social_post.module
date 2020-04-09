@@ -1,7 +1,10 @@
 <?php
 
-use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+/**
+ * @file
+ */
+
+use Drupal\Core\Url;
 
 /**
  * Implements hook_form_alter().
@@ -29,14 +32,14 @@ function uber_publisher_social_post_node_insert($entity) {
   $fields = $entity->getfields();
   if (isset($fields['field_post_to_twitter'])) {
     $options = ['absolute' => TRUE];
-    $url = \Drupal\Core\Url::fromRoute('entity.node.canonical', ['node' => $entity->id()], $options)->toString();
+    $url = Url::fromRoute('entity.node.canonical', ['node' => $entity->id()], $options)->toString();
     $autotweet = $fields['field_post_to_twitter']->getValue()[0]['value'];
     if ($autotweet == 1) {
       $title = $fields['title']->getValue()[0]['value'];
       $status = $title . " " . $url;
       $twitterPost = \Drupal::service('plugin.network.manager')->createInstance('social_post_twitter');
       $twitterEntity = \Drupal::entityTypeManager()->getStorage('social_post_twitter_user');
-      $accounts = $twitterEntity->loadByProperties(['uid' => Drupal::currentUser()->id(),]);
+      $accounts = $twitterEntity->loadByProperties(['uid' => Drupal::currentUser()->id()]);
       foreach ($accounts as $account) {
         $twitterPost->doPost($account->getAccessToken(), $account->getAccessTokenSecret(), $status);
       }
