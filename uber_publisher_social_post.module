@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Contains uber_publisher_social_post.module.
  */
 
 use Drupal\Core\Url;
