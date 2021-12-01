@@ -32,7 +32,7 @@
     "cweagans/composer-patches": "~1.0",
     "drupal/core": "~8.0 || ~9.0",
     "drupal/uber_publisher_core": "~7.0 || 7.0.x-dev",
-    "drupal/social_post_twitter": "~2.0"
+    "drupal/social_post_twitter": "~3.0"
   },
   "extra": {
     "branch-alias": {
